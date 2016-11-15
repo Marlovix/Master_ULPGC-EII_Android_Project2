@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_font_players">20sp</dimen>
+    <dimen name="size_font_game_state_and_buttons">15sp</dimen>
+    <dimen name="width_button">125dp</dimen>
+    <dimen name="margin_game">15dp</dimen>
+</resources>

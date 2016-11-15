@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">Practica2</string>
+    <string name="app_name" translatable="false">Práctica2</string>
+    <string name="description_die_image">Die image</string>
+    <string name="label_accumulated">Accumulated in the turn: %1$d</string>
+    <string name="label_start_turn">Starts turn %1$s</string>
+    <string name="label_throw">Throw</string>
+    <string name="label_collect">Collect</string>
+    <string name="player">Player %1$d</string>
+    <string name="button_play_again">Play again</string>
+    <string name="button_exit">Exit</string>
+    <string name="button_final">Final</string>
+    <string name="label_won">%1$s wins</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

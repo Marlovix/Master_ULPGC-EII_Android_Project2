@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description_die_image">Imagen del dado</string>
+    <string name="label_accumulated">Acumulado en el turno: %1$d</string>
+    <string name="label_start_turn">Comienza turno %1$s</string>
+    <string name="label_throw">Tirar</string>
+    <string name="label_collect">Recoger</string>
+    <string name="player">Jugador %1$d</string>
+    <string name="button_play_again">Volver a jugar</string>
+    <string name="button_exit">Salir</string>
+    <string name="button_final">Partida finalizada</string>
+    <string name="label_won">%1$s gana</string>
+</resources>
