@@ -1,12 +1,15 @@
 package es.ulpgc.eii.android.project2.modal;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Marlovix
  * TODO: Add a class header comment!
  */
 
 // Class with all information which is necessary for a player //
-public class Player {
+public class Player implements Parcelable {
 
     private String name;
     private int totalScore;
@@ -51,4 +54,36 @@ public class Player {
     public void setScore(int totalScore) {
         this.totalScore = totalScore;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.name);
+        dest.writeInt(this.totalScore);
+        dest.writeInt(this.accumulatedScore);
+        dest.writeInt(this.color);
+    }
+
+    protected Player(Parcel in) {
+        this.name = in.readString();
+        this.totalScore = in.readInt();
+        this.accumulatedScore = in.readInt();
+        this.color = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Player> CREATOR = new Parcelable.Creator<Player>() {
+        @Override
+        public Player createFromParcel(Parcel source) {
+            return new Player(source);
+        }
+
+        @Override
+        public Player[] newArray(int size) {
+            return new Player[size];
+        }
+    };
 }

@@ -15,7 +15,7 @@ import es.ulpgc.eii.android.project2.modal.Player;
 
 // Class which contains the text reports about the state of the game, as the accumulated score,
 // the name of the player who is playing and the clickable text to start the turn with a color //
-public class GameInfo extends GameObject {
+public class GameInfo {
 
     private TextView textViewPlayerToPlay;
     private TextView textViewStartTurn;
@@ -28,7 +28,7 @@ public class GameInfo extends GameObject {
         this.textViewStartTurn = textViewStartTurn;
     }
 
-    private void setPlayerInfo(Player player) {
+    public void setPlayerInfo(Player player) {
         Context context = textViewPlayerToPlay.getContext();
         int accumulatedScore = player.getAccumulatedScore();
         int colorText = player.getColor();
@@ -46,41 +46,6 @@ public class GameInfo extends GameObject {
         String textAccumulated =
                 String.format(context.getString(R.string.label_accumulated), accumulatedScore);
         textViewAccumulated.setText(textAccumulated);
-    }
-
-    @Override
-    public void startGame(Game game) {
-        setInfo(game);
-        textViewStartTurn.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void readyToPlay(Game game) {
-        setInfo(game);
-        textViewStartTurn.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    public void gamePlay(Game game) {
-        setInfo(game);
-        textViewStartTurn.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    public void lostTurnByOne(Game game) {
-        setInfo(game);
-        textViewStartTurn.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void finishGame(Game game) {
-        setInfo(game);
-        textViewStartTurn.setVisibility(View.INVISIBLE);
-    }
-
-    private void setInfo(Game game) {
-        Player playerToStart = game.getTurnPlayer();
-        setPlayerInfo(playerToStart);
     }
 
 }

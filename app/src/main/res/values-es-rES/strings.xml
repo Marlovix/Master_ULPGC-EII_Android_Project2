@@ -10,4 +10,10 @@
     <string name="button_exit">Salir</string>
     <string name="button_final">Partida finalizada</string>
     <string name="label_won">%1$s gana</string>
+    <string name="machine">Máquina</string>
+    <string name="label_throwing">Tirando</string>
+    <string-array name="number_players">
+        <item>Un jugador</item>
+        <item>Dos jugadores</item>
+    </string-array>
 </resources>

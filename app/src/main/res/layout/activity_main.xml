@@ -1,97 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/game"
-    tools:context=".MainActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.MainActivity">
 
-    <LinearLayout style="@style/players_content">
+    <include
+        layout="@layout/content_main"
+        app:layout_gravity="center"/>
 
-        <LinearLayout style="@style/players_text">
-
-            <TextView
-                android:id="@+id/textView_player1"
-                style="@style/players"
-                android:gravity="start" />
-
-            <TextView
-                android:id="@+id/textView_player1_score"
-                style="@style/players"
-                android:gravity="end" />
-
-        </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/progressBar_score_player1"
-            style="@style/progress" />
-
-    </LinearLayout>
-
-    <LinearLayout style="@style/players_content">
-
-        <LinearLayout style="@style/players_text">
-
-            <TextView
-                android:id="@+id/textView_player2"
-                style="@style/players"
-                android:gravity="start" />
-
-            <TextView
-                android:id="@+id/textView_player2_score"
-                style="@style/players"
-                android:gravity="end" />
-
-        </LinearLayout>
-
-        <ProgressBar
-            android:id="@+id/progressBar_score_player2"
-            style="@style/progress" />
-
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView_die"
-        style="@style/die_image"
-        android:contentDescription="@string/description_die_image" />
-
-    <LinearLayout
-        style="@style/game_state_content"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/textView_player_turn"
-            style="@style/game_state" />
-
-        <TextView
-            android:id="@+id/textView_accumulated_score"
-            style="@style/game_state"
-            android:text="@string/label_accumulated" />
-
-        <TextView
-            android:id="@+id/textView_start_turn"
-            style="@style/game_state"
-            android:text="@string/label_start_turn" />
-
-    </LinearLayout>
-
-    <android.support.v7.widget.GridLayout style="@style/button_content">
-
-        <Button
-            android:id="@+id/button_throw"
-            style="@style/buttons"
-            android:text="@string/label_throw"
-            app:columnCount="2"
-            app:layout_gravity="start"
-            app:rowCount="1" />
-
-        <Button
-            android:id="@+id/button_collect"
-            style="@style/buttons"
-            android:text="@string/label_collect"
-            app:columnCount="2"
-            app:layout_gravity="end"
-            app:rowCount="1" />
-
-    </android.support.v7.widget.GridLayout>
-
-</LinearLayout>
+</android.support.v7.widget.GridLayout>

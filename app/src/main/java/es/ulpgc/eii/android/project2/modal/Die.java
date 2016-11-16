@@ -1,5 +1,8 @@
 package es.ulpgc.eii.android.project2.modal;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.lang.reflect.Field;
 import java.util.Random;
 
@@ -11,7 +14,7 @@ import es.ulpgc.eii.android.project2.R;
  */
 
 // Class which shows the correct image for the different results of the die throwing //
-class Die {
+class Die implements Parcelable {
 
     private int faces;
 
@@ -45,4 +48,29 @@ class Die {
         faces = numberOfFacesDrawables;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.faces);
+    }
+
+    protected Die(Parcel in) {
+        this.faces = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Die> CREATOR = new Parcelable.Creator<Die>() {
+        @Override
+        public Die createFromParcel(Parcel source) {
+            return new Die(source);
+        }
+
+        @Override
+        public Die[] newArray(int size) {
+            return new Die[size];
+        }
+    };
 }

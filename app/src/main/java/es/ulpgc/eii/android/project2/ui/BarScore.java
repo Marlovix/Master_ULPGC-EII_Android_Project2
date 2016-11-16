@@ -23,11 +23,11 @@ public class BarScore {
         this.progressBar = progressBar;
     }
 
-    void setNameBarScore(String name) {
+    public void setNameBarScore(String name) {
         textViewNamePlayer.setText(name);
     }
 
-    void setScore(int score) {
+    public void setScore(int score) {
         progressBar.setProgress(score);
         textViewScore.setText(String.format(Locale.getDefault(), "%d", score));
     }

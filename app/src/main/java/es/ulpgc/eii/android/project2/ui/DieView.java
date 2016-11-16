@@ -11,14 +11,14 @@ import es.ulpgc.eii.android.project2.modal.Game;
  * TODO: Add a class header comment!
  */
 
-public class DieView extends GameObject {
+public class DieView {
     private ImageView imageViewDie;
 
     public DieView(ImageView imageViewDie) {
         this.imageViewDie = imageViewDie;
     }
 
-    private void setImage(Game game) {
+    public void setImage(Game game) {
         int lastThrowing = game.getLastThrowing();
         int image = 0;
         switch (lastThrowing) {
@@ -42,33 +42,5 @@ public class DieView extends GameObject {
                 break;
         }
         imageViewDie.setImageResource(image);
-    }
-
-    @Override
-    public void startGame(Game game) {
-        imageViewDie.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    public void readyToPlay(Game game) {
-        imageViewDie.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    public void gamePlay(Game game) {
-        setImage(game);
-        imageViewDie.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void lostTurnByOne(Game game) {
-        setImage(game);
-        imageViewDie.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void finishGame(Game game) {
-        setImage(game);
-        imageViewDie.setVisibility(View.VISIBLE);
     }
 }

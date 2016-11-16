@@ -1,5 +1,8 @@
 package es.ulpgc.eii.android.project2.modal;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Collections;
 
 /**
@@ -7,7 +10,8 @@ import java.util.Collections;
  * TODO: Add a class header comment!
  */
 
-public class Game {
+public class Game implements Parcelable {
+
 
     private GameState gameState;
     private Players players;
@@ -86,4 +90,38 @@ public class Game {
         gameState = GameState.WINNER;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.gameState == null ? -1 : this.gameState.ordinal());
+        dest.writeParcelable(this.players, flags);
+        dest.writeParcelable(this.die, flags);
+        dest.writeInt(this.maxScore);
+        dest.writeInt(this.lastThrowing);
+    }
+
+    protected Game(Parcel in) {
+        int tmpGameState = in.readInt();
+        this.gameState = tmpGameState == -1 ? null : GameState.values()[tmpGameState];
+        this.players = in.readParcelable(Players.class.getClassLoader());
+        this.die = in.readParcelable(Die.class.getClassLoader());
+        this.maxScore = in.readInt();
+        this.lastThrowing = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Game> CREATOR = new Parcelable.Creator<Game>() {
+        @Override
+        public Game createFromParcel(Parcel source) {
+            return new Game(source);
+        }
+
+        @Override
+        public Game[] newArray(int size) {
+            return new Game[size];
+        }
+    };
 }

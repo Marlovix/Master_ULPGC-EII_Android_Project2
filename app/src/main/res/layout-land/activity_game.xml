@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:columnCount="1"
+    app:rowCount="2"
+    style="@style/game"
+    tools:context=".ui.activity.GameActivity">
+
+    <fragment
+        android:id="@+id/fragment_players"
+        android:name="es.ulpgc.eii.pea.practica2_marlonfernandez.ui.fragment.PlayersFragment"
+        android:layout_width="match_parent"
+        app:layout_rowWeight="0.25"
+        tools:layout="@layout/fragment_players" />
+
+    <android.support.v7.widget.GridLayout
+        app:layout_rowWeight="0.75"
+        android:layout_width="match_parent">
+
+        <fragment
+            android:id="@+id/fragment_panel"
+            android:name="es.ulpgc.eii.pea.practica2_marlonfernandez.ui.fragment.PanelFragment"
+            app:layout_gravity="fill"
+            tools:layout="@layout/fragment_panel" />
+
+        <fragment
+            android:id="@+id/fragment_die"
+            android:name="es.ulpgc.eii.pea.practica2_marlonfernandez.ui.fragment.DieFragment"
+            app:layout_gravity="fill"
+            tools:layout="@layout/fragment_die"/>
+
+    </android.support.v7.widget.GridLayout>
+
+</android.support.v7.widget.GridLayout>

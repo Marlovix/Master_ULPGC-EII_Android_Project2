@@ -1,0 +1,20 @@
+<android.support.v7.widget.GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:columnCount="1"
+    app:rowCount="2"
+    tools:context=".ui.fragment.MainActivityFragment"
+    tools:showIn="@layout/activity_main">
+
+    <Button
+        android:id="@+id/button_one_player"
+        style="@style/buttons"/>
+
+    <Button
+        android:id="@+id/button_two_players"
+        style="@style/buttons"/>
+
+</android.support.v7.widget.GridLayout>

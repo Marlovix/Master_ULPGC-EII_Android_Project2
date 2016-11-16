@@ -24,18 +24,6 @@ public class CollectListener implements View.OnClickListener {
     // When the player collects the accumulated score the game changes the player to play //
     @Override
     public void onClick(View v) {
-        game.setStateStart();
 
-        Player playerPlaying = game.getTurnPlayer();
-        int accumulatedScore = playerPlaying.getAccumulatedScore();
-        int currentScore = playerPlaying.getScore();
-        int newScore = accumulatedScore + currentScore;
-
-        playerPlaying.setScore(newScore);
-        playerPlaying.resetAccumulatedScore();
-
-        game.changeTurn();
-
-        for (GameObject gameObject : gameObjects) gameObject.startGame(game);
     }
 }

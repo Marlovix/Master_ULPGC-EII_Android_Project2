@@ -13,17 +13,17 @@ import es.ulpgc.eii.android.project2.ui.GameObject;
 public class StartTurnListener implements View.OnClickListener {
 
     private Game game;
-    private GameObject[] gameObjects;
+    private GameObject gameObject;
 
-    public StartTurnListener(Game game, GameObject... gameObjects) {
+    public StartTurnListener(Game game, GameObject gameObject) {
         this.game = game;
-        this.gameObjects = gameObjects;
+        this.gameObject = gameObject;
     }
 
     // The text to start the turn disappears and enables the Throw Button //
     @Override
     public void onClick(View v) {
         game.setStateReady();
-        for (GameObject gameObject : gameObjects) gameObject.readyToPlay(game);
+        gameObject.readyToPlay(game);
     }
 }

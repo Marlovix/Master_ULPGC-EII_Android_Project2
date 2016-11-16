@@ -7,14 +7,10 @@ import es.ulpgc.eii.android.project2.modal.Game;
  * TODO: Add a class header comment!
  */
 
-public abstract class GameObject {
-    public abstract void startGame(Game game);
-
-    public abstract void readyToPlay(Game game);
-
-    public abstract void gamePlay(Game game);
-
-    public abstract void lostTurnByOne(Game game);
-
-    public abstract void finishGame(Game game);
+public interface GameObject {
+    void startGame(Game game);
+    void readyToPlay(Game game);
+    void gamePlay(Game game);
+    void lostTurnByOne(Game game);
+    void finishGame(Game game);
 }
