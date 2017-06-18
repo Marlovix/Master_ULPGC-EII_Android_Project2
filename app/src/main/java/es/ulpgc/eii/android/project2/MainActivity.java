@@ -1,14 +1,18 @@
 package es.ulpgc.eii.android.project2;
 
 import android.os.Bundle;
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_main);
+
+        if (getIntent().getBooleanExtra("EXIT", false)) {
+            finish();
+        }
     }
 
 }

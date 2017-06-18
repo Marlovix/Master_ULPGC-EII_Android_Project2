@@ -3,24 +3,27 @@ package es.ulpgc.eii.android.project2.modal;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by Marlovix
- * TODO: Add a class header comment!
- */
-
-// Class with all information which is necessary for a player //
 public class Player implements Parcelable {
 
+    private int color;
     private String name;
     private int totalScore;
-    private int accumulatedScore;
-    private int color;
 
-    public Player(String name, int color) {
+    public boolean isHuman() {
+        return isHuman;
+    }
+
+    private boolean isHuman;
+
+    public Player(String name, int color, boolean isHuman) {
         this.name = name;
         this.color = color;
+        this.isHuman = isHuman;
         totalScore = 0;
-        accumulatedScore = 0;
+    }
+
+    public int getColor() {
+        return color;
     }
 
     public String getName() {
@@ -29,22 +32,6 @@ public class Player implements Parcelable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getAccumulatedScore() {
-        return accumulatedScore;
-    }
-
-    public void resetAccumulatedScore() {
-        this.accumulatedScore = 0;
-    }
-
-    public void addAccumulatedScore(int accumulatedScore) {
-        this.accumulatedScore += accumulatedScore;
-    }
-
-    public int getColor() {
-        return color;
     }
 
     public int getScore() {
@@ -62,20 +49,20 @@ public class Player implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.color);
         dest.writeString(this.name);
         dest.writeInt(this.totalScore);
-        dest.writeInt(this.accumulatedScore);
-        dest.writeInt(this.color);
+        dest.writeByte(this.isHuman ? (byte) 1 : (byte) 0);
     }
 
-    protected Player(Parcel in) {
+    private Player(Parcel in) {
+        this.color = in.readInt();
         this.name = in.readString();
         this.totalScore = in.readInt();
-        this.accumulatedScore = in.readInt();
-        this.color = in.readInt();
+        this.isHuman = in.readByte() != 0;
     }
 
-    public static final Parcelable.Creator<Player> CREATOR = new Parcelable.Creator<Player>() {
+    public static final Creator<Player> CREATOR = new Creator<Player>() {
         @Override
         public Player createFromParcel(Parcel source) {
             return new Player(source);

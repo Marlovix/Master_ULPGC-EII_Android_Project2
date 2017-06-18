@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="description_die_image">Imagen del dado</string>
-    <string name="label_accumulated">Acumulado en el turno: %1$d</string>
-    <string name="label_start_turn">Comienza turno %1$s</string>
-    <string name="label_throw">Tirar</string>
-    <string name="label_collect">Recoger</string>
-    <string name="player">Jugador %1$d</string>
     <string name="button_play_again">Volver a jugar</string>
     <string name="button_exit">Salir</string>
     <string name="button_final">Partida finalizada</string>
+    <string name="description_die_image">Imagen del dado</string>
+    <string name="label_accumulated">Acumulado en el turno: %1$d</string>
+    <string name="label_collect">Recoger</string>
+    <string name="label_exit_question">¿Salir o empezar nueva partida?</string>
+    <string name="label_start_turn">Comienza turno %1$s</string>
+    <string name="label_throw">Tirar</string>
+    <string name="label_throwing">Tirando</string>
     <string name="label_won">%1$s gana</string>
     <string name="machine">Máquina</string>
-    <string name="label_throwing">Tirando</string>
     <string-array name="number_players">
         <item>Un jugador</item>
         <item>Dos jugadores</item>
     </string-array>
+    <string name="player">Jugador %1$d</string>
+    <string name="start_new_game">Empezar nueva partida</string>
 </resources>

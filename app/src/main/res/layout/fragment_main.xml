@@ -6,15 +6,15 @@
     android:layout_height="match_parent"
     app:columnCount="1"
     app:rowCount="2"
-    tools:context=".ui.fragment.MainActivityFragment"
+    tools:context=".fragment.MainActivityFragment"
     tools:showIn="@layout/activity_main">
 
     <Button
         android:id="@+id/button_one_player"
-        style="@style/buttons"/>
+        style="@style/main_buttons"/>
 
     <Button
         android:id="@+id/button_two_players"
-        style="@style/buttons"/>
+        style="@style/main_buttons"/>
 
 </android.support.v7.widget.GridLayout>

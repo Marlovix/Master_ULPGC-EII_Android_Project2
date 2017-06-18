@@ -6,9 +6,9 @@ import android.os.CountDownTimer;
 import es.ulpgc.eii.android.project2.tools.RandomNumbers;
 import es.ulpgc.eii.android.project2.MainActivity;
 
-public class MachinePlayingAnimation extends ChangeImageAnimation{
+public class MachinePlayingAnimation {
 
-    private MainActivity gameActivity;
+    /*private MainActivity gameActivity;
     private Drawable[] drawables;
     private int numberOfThrowing;
 
@@ -28,9 +28,9 @@ public class MachinePlayingAnimation extends ChangeImageAnimation{
         numberOfThrowing--;
 
         int throwingValue = RandomNumbers.showRandomInteger(1, drawables.length);
-        gameActivity.setDieImage(throwingValue);
+        //gameActivity.setDieImage(throwingValue);
 
-        if (gameActivity.throwingValueIsValid(throwingValue)){
+        /*if (gameActivity.throwingValueIsValid(throwingValue)) {
             new CountDownTimer(5000, 1500) {
                 @Override
                 public void onTick(long millisUntilFinished) {
@@ -39,18 +39,18 @@ public class MachinePlayingAnimation extends ChangeImageAnimation{
 
                 @Override
                 public void onFinish() {
-                    if (numberOfThrowing == 0){
+                    if (numberOfThrowing == 0) {
                         gameActivity.setAvailabilityButtons(true);
                         gameActivity.resetThrowButton();
                         gameActivity.collectAccumulated();
-                    }else{
+                    } else {
                         gameActivity.playMachine(numberOfThrowing);
                     }
                 }
             }.start();
-        }else{
+        } else {
             gameActivity.setAvailabilityButtons(true);
             gameActivity.resetThrowButton();
         }
-    }
+    }*/
 }

@@ -5,77 +5,91 @@ import android.os.Parcelable;
 
 import java.util.Collections;
 
-/**
- * Created by Marlovix
- * TODO: Add a class header comment!
- */
-
 public class Game implements Parcelable {
 
-
-    private GameState gameState;
-    private Players players;
+    private int accumulatedScore;
     private Die die;
-    private int maxScore;
+    private GameState gameState;
     private int lastThrowing;
+    private int maxScore;
+
+    private int machineThrowing;
+    private int machineThrowingValue;
+    private long timeAnimation;
+    private Players players;
 
     public Game(Player... players) {
         gameState = GameState.START;
-
-        // 100 points are necessary to win the game //
-        maxScore = 20;
+        accumulatedScore = 0;
         lastThrowing = 0;
+        machineThrowing = 0;
 
         die = new Die();
 
-        // Players with their bar scores //
         this.players = new Players();
         Collections.addAll(this.players, players);
     }
 
-    public int getLastThrowing() {
-        return lastThrowing;
+    public int getAccumulatedScore() {
+        return accumulatedScore;
     }
 
-    // The game starts with the player who is set as parameter //
-    public void start(Player firstPlayer) {
-        this.players.setFirstPlayer(firstPlayer);
-        this.players.resetScores();
-    }
-
-    public Player getTurnPlayer() {
-        return this.players.getPlayer();
-    }
-
-    // When a turn is going to be started, the player is changed,
-    // the game gameState is updated and the buttons are hidden //
-    public void changeTurn() {
-        players.changePlayer();
-    }
-
-    public int throwDie() {
-        lastThrowing = die.getValue();
-        return lastThrowing;
-    }
-
-    public Players getPlayers() {
-        return players;
-    }
-
-    public int getMaxScore() {
-        return maxScore;
+    public void setAccumulatedScore(int accumulatedInGame) {
+        this.accumulatedScore = accumulatedInGame;
     }
 
     public GameState getGameState() {
         return gameState;
     }
 
-    public void setStateStart() {
-        gameState = GameState.START;
+    public int getLastThrowing() {
+        return lastThrowing;
     }
 
-    public void setStateReady() {
-        gameState = GameState.READY;
+    public int getScoreToWin() {
+        return maxScore;
+    }
+
+    public Players getPlayers() {
+        return players;
+    }
+
+    public void restart(Player newPlayer) {
+        setAccumulatedScore(0);
+        for (Player player : players) player.setScore(0);
+        lastThrowing = 0;
+
+        start(newPlayer, maxScore);
+    }
+
+    public void changeTurn() {
+        players.changePlayer();
+    }
+
+    public Player getTurnPlayer() {
+        return this.players.getPlayer();
+    }
+
+    // The game starts with the player who is set as parameter and set the score to win the game //
+    public void start(Player firstPlayer, int maxScore) {
+        this.maxScore = maxScore;
+        players.setFirstPlayer(firstPlayer);
+    }
+
+    public int getMachineThrowingValue() {
+        return machineThrowingValue;
+    }
+
+    public void setMachineThrowingValue(int machineThrowingValue) {
+        this.machineThrowingValue = machineThrowingValue;
+    }
+
+    public int getMachineThrowing() {
+        return machineThrowing;
+    }
+
+    public void setMachineThrowing(int machineThrowing) {
+        this.machineThrowing = machineThrowing;
     }
 
     public void setStateGame() {
@@ -86,8 +100,41 @@ public class Game implements Parcelable {
         gameState = GameState.ONE;
     }
 
+    public void setStateReady() {
+        gameState = GameState.READY;
+    }
+
+    public void setStateStart() {
+        gameState = GameState.START;
+    }
+
+    public void setStateTurn() {
+        gameState = GameState.TURN;
+    }
+
     public void setStateWinner() {
-        gameState = GameState.WINNER;
+        gameState = GameState.FINISH;
+    }
+
+    public void setStateThrowing() {
+        gameState = GameState.THROWING;
+    }
+
+    public void setStateScore() {
+        gameState = GameState.SCORE;
+    }
+
+    public int throwDie() {
+        lastThrowing = die.getValue();
+        return lastThrowing;
+    }
+
+    public void setTimeAnimation(long timeAnimation) {
+        this.timeAnimation = timeAnimation;
+    }
+
+    public long getTimeAnimation() {
+        return timeAnimation;
     }
 
     @Override
@@ -97,23 +144,31 @@ public class Game implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.gameState == null ? -1 : this.gameState.ordinal());
-        dest.writeParcelable(this.players, flags);
+        dest.writeInt(this.accumulatedScore);
         dest.writeParcelable(this.die, flags);
-        dest.writeInt(this.maxScore);
+        dest.writeInt(this.gameState == null ? -1 : this.gameState.ordinal());
         dest.writeInt(this.lastThrowing);
+        dest.writeInt(this.maxScore);
+        dest.writeInt(this.machineThrowing);
+        dest.writeInt(this.machineThrowingValue);
+        dest.writeLong(this.timeAnimation);
+        dest.writeParcelable(this.players, flags);
     }
 
-    protected Game(Parcel in) {
+    private Game(Parcel in) {
+        this.accumulatedScore = in.readInt();
+        this.die = in.readParcelable(Die.class.getClassLoader());
         int tmpGameState = in.readInt();
         this.gameState = tmpGameState == -1 ? null : GameState.values()[tmpGameState];
-        this.players = in.readParcelable(Players.class.getClassLoader());
-        this.die = in.readParcelable(Die.class.getClassLoader());
-        this.maxScore = in.readInt();
         this.lastThrowing = in.readInt();
+        this.maxScore = in.readInt();
+        this.machineThrowing = in.readInt();
+        this.machineThrowingValue = in.readInt();
+        this.timeAnimation = in.readLong();
+        this.players = in.readParcelable(Players.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<Game> CREATOR = new Parcelable.Creator<Game>() {
+    public static final Creator<Game> CREATOR = new Creator<Game>() {
         @Override
         public Game createFromParcel(Parcel source) {
             return new Game(source);

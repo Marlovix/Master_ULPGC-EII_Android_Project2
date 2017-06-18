@@ -3,29 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/game"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    app:orientation="vertical"
     app:columnCount="1"
     app:rowCount="3"
-    tools:context=".ui.activity.GameActivity">
+    tools:context=".GameActivity">
 
     <fragment
         android:id="@+id/fragment_players"
-        android:name="es.ulpgc.eii.pea.practica2_marlonfernandez.ui.fragment.PlayersFragment"
+        android:name="es.ulpgc.eii.android.project2.fragment.PlayersFragment"
         android:layout_width="match_parent"
         app:layout_rowWeight="0.1"
         tools:layout="@layout/fragment_players" />
 
     <fragment
         android:id="@+id/fragment_die"
-        android:name="es.ulpgc.eii.pea.practica2_marlonfernandez.ui.fragment.DieFragment"
+        android:name="es.ulpgc.eii.android.project2.fragment.DieFragment"
         android:layout_width="match_parent"
         app:layout_rowWeight="0.5"
         tools:layout="@layout/fragment_die" />
 
     <fragment
         android:id="@+id/fragment_panel"
-        android:name="es.ulpgc.eii.pea.practica2_marlonfernandez.ui.fragment.PanelFragment"
+        android:name="es.ulpgc.eii.android.project2.fragment.PanelFragment"
         app:layout_rowWeight="0.4"
         android:layout_width="match_parent"
         tools:layout="@layout/fragment_panel" />

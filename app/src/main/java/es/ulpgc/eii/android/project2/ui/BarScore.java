@@ -5,17 +5,11 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-/**
- * Created by Marlovix
- * TODO: Add a class header comment!
- */
-
-// Class which updates the view of the widgets related with the player score //
 public class BarScore {
 
+    private ProgressBar progressBar;
     private TextView textViewNamePlayer;
     private TextView textViewScore;
-    private ProgressBar progressBar;
 
     public BarScore(TextView textViewNamePlayer, TextView textViewScore, ProgressBar progressBar) {
         this.textViewNamePlayer = textViewNamePlayer;
@@ -32,7 +26,7 @@ public class BarScore {
         textViewScore.setText(String.format(Locale.getDefault(), "%d", score));
     }
 
-    void setMax(int max) {
+    public void setMax(int max) {
         progressBar.setMax(max);
     }
 }

@@ -4,37 +4,31 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.lang.reflect.Field;
-import java.util.Random;
 
 import es.ulpgc.eii.android.project2.R;
+import es.ulpgc.eii.android.project2.tools.RandomNumbers;
 
-/**
- * Created by Marlovix
- * TODO: Add a class header comment!
- */
-
-// Class which shows the correct image for the different results of the die throwing //
 class Die implements Parcelable {
 
+    public static final Parcelable.Creator<Die> CREATOR = new Parcelable.Creator<Die>() {
+        @Override
+        public Die createFromParcel(Parcel source) {
+            return new Die(source);
+        }
+
+        @Override
+        public Die[] newArray(int size) {
+            return new Die[size];
+        }
+    };
     private int faces;
 
     Die() {
         setNumberOfFaces();
     }
 
-    int getValue() {
-        return showRandomInteger(1, faces);
-    }
-
-    // Returns a random number between two values //
-    private int showRandomInteger(int start, int end) {
-        if (start > end) {
-            throw new IllegalArgumentException("Start cannot exceed End.");
-        }
-        long range = (long) end - (long) start + 1;
-        Random random = new Random();
-        long fraction = (long) (range * random.nextDouble());
-        return (int) (fraction + start);
+    private Die(Parcel in) {
+        this.faces = in.readInt();
     }
 
     // It establishes the number of faces that the die has //
@@ -58,19 +52,7 @@ class Die implements Parcelable {
         dest.writeInt(this.faces);
     }
 
-    protected Die(Parcel in) {
-        this.faces = in.readInt();
+    int getValue() {
+        return RandomNumbers.showRandomInteger(1, faces);
     }
-
-    public static final Parcelable.Creator<Die> CREATOR = new Parcelable.Creator<Die>() {
-        @Override
-        public Die createFromParcel(Parcel source) {
-            return new Die(source);
-        }
-
-        @Override
-        public Die[] newArray(int size) {
-            return new Die[size];
-        }
-    };
 }

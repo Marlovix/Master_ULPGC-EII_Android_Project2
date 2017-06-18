@@ -1,6 +1,5 @@
 package es.ulpgc.eii.android.project2.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,13 +11,12 @@ import android.widget.TextView;
 import es.ulpgc.eii.android.project2.R;
 import es.ulpgc.eii.android.project2.modal.Game;
 import es.ulpgc.eii.android.project2.modal.Player;
+import es.ulpgc.eii.android.project2.modal.Players;
 import es.ulpgc.eii.android.project2.ui.BarScore;
 import es.ulpgc.eii.android.project2.ui.GameObject;
-import es.ulpgc.eii.android.project2.ui.ScoreBoard;
 
-public class PlayersFragment extends Fragment implements GameObject{
+public class PlayersFragment extends Fragment implements GameObject {
 
-    private ScoreBoard scoreBoard;
     private BarScore barScorePlayer1;
     private BarScore barScorePlayer2;
 
@@ -35,34 +33,28 @@ public class PlayersFragment extends Fragment implements GameObject{
 
         TextView textViewPlayer1 = (TextView) view.findViewById(R.id.textView_player1);
         TextView textViewScorePlayer1 = (TextView) view.findViewById(R.id.textView_player1_score);
-        ProgressBar progressBarPlayer1 = (ProgressBar) view.findViewById(R.id.progressBar_score_player1);
+        ProgressBar progressBarPlayer1 = (ProgressBar) view.findViewById(R.id.progress_score_player1);
 
         TextView textViewPlayer2 = (TextView) view.findViewById(R.id.textView_player2);
         TextView textViewScorePlayer2 = (TextView) view.findViewById(R.id.textView_player2_score);
-        ProgressBar progressBarPlayer2 = (ProgressBar) view.findViewById(R.id.progressBar_score_player2);
+        ProgressBar progressBarPlayer2 = (ProgressBar) view.findViewById(R.id.progress_score_player2);
 
-        BarScore barScorePlayer1 =
-                new BarScore(textViewPlayer1, textViewScorePlayer1, progressBarPlayer1);
-        BarScore barScorePlayer2 =
-                new BarScore(textViewPlayer2, textViewScorePlayer2, progressBarPlayer2);
-
-        scoreBoard = new ScoreBoard(barScorePlayer1, barScorePlayer2);
+        barScorePlayer1 = new BarScore(textViewPlayer1, textViewScorePlayer1, progressBarPlayer1);
+        barScorePlayer2 = new BarScore(textViewPlayer2, textViewScorePlayer2, progressBarPlayer2);
 
         return view;
     }
 
-    public BarScore getBarScorePlayer1() {
-        return barScorePlayer1;
-    }
-
-    public BarScore getBarScorePlayer2() {
-        return barScorePlayer2;
-    }
-
     private void renderScoreBoard(Game game) {
-        scoreBoard.setNames(game);
+        setNames(game);
         showCurrentScores(game);
-        scoreBoard.setMax(game.getMaxScore());
+        setMax(game);
+    }
+
+    private void setNames(Game game) {
+        Players players = game.getPlayers();
+        barScorePlayer1.setNameBarScore(players.get(0).getName());
+        barScorePlayer2.setNameBarScore(players.get(1).getName());
     }
 
     private void showCurrentScores(Game game) {
@@ -73,13 +65,14 @@ public class PlayersFragment extends Fragment implements GameObject{
         barScorePlayer2.setScore(player2.getScore());
     }
 
-    @Override
-    public void startGame(Game game) {
-        renderScoreBoard(game);
+    private void setMax(Game game) {
+        int max = game.getScoreToWin();
+        barScorePlayer1.setMax(max);
+        barScorePlayer2.setMax(max);
     }
 
     @Override
-    public void readyToPlay(Game game) {
+    public void finishGame(Game game) {
         renderScoreBoard(game);
     }
 
@@ -94,7 +87,27 @@ public class PlayersFragment extends Fragment implements GameObject{
     }
 
     @Override
-    public void finishGame(Game game) {
+    public void readyToPlay(Game game) {
+        renderScoreBoard(game);
+    }
+
+    @Override
+    public void startGame(Game game) {
+        renderScoreBoard(game);
+    }
+
+    @Override
+    public void startTurn(Game game) {
+        renderScoreBoard(game);
+    }
+
+    @Override
+    public void throwingDie(Game game) {
+        renderScoreBoard(game);
+    }
+
+    @Override
+    public void showingScore(Game game) {
         renderScoreBoard(game);
     }
 }

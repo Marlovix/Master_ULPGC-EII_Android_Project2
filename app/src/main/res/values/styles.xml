@@ -1,15 +1,19 @@
 <resources>
 
-    <!--<style name="NoActionBar" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="app_theme" parent="android:Theme.Light">
         <item name="android:windowNoTitle">true</item>
-    </style>-->
+    </style>
 
     <style name="game">
         <item name="android:layout_margin">@dimen/margin_game</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:orientation">vertical</item>
         <item name="android:weightSum">1</item>
+    </style>
+
+    <style name="fragments">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
 
     <style name="die_image">
@@ -18,7 +22,7 @@
     </style>
 
     <style name="players">
-        <item name="android:textSize">@dimen/size_font_players</item>
+        <item name="android:textSize">@dimen/font_size_game</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:layout_width">wrap_content</item>
@@ -28,24 +32,40 @@
     <style name="progress" parent="@android:style/Widget.ProgressBar.Horizontal">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <!--<item name="app:layout_columnSpan">2</item>-->
     </style>
 
     <style name="game_state">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
-        <!--<item name="app:layout_columnSpan">2</item>-->
-        <item name="android:textSize">@dimen/size_font_game_state_and_buttons</item>
+        <item name="android:textSize">@dimen/font_size_game</item>
+    </style>
+
+    <style name="game_state_buttons">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_size_game</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/label_button</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
     <style name="buttons" parent="@android:style/Widget.Button">
+        <item name="android:textSize">@dimen/font_size_game</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/label_button</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="main_buttons" parent="@android:style/Widget.Button">
         <item name="android:layout_margin">@dimen/margin_button</item>
         <item name="android:layout_width">@dimen/width_button</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/size_font_game_state_and_buttons</item>
+        <item name="android:padding">@dimen/padding_button</item>
+        <item name="android:textSize">@dimen/font_size_game</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/human_buttons</item>
+        <item name="android:textColor">@color/label_button</item>
         <item name="android:background">@drawable/button</item>
     </style>
 

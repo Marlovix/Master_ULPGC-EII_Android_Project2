@@ -2,24 +2,54 @@ package es.ulpgc.eii.android.project2.animation;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.Log;
 
 import es.ulpgc.eii.android.project2.tools.RandomNumbers;
+import es.ulpgc.eii.android.project2.ui.GameObject;
 
-public abstract class ChangeImageAnimation extends AnimationDrawable {
+public abstract class ChangeImageAnimation  {
+/*
+    static final int FRAMES = 100;
 
     private int animationDuration;
-    private Drawable[] drawables;
-    protected int[] randomNumbers;
+    private GameObject gameObject;
 
-    public ChangeImageAnimation(Drawable[] drawables, int numberOfFrames, float secondsOfAnimation){
-        this.drawables = drawables;
+    public ChangeImageAnimation(GameObject gameObject, float secondsOfAnimation){
+        new CountDownTimer(5000, 1500) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                Log.d("MILLIS", String.valueOf(millisUntilFinished));
+            }
+
+            @Override
+            public void onFinish() {
+                /*if (numberOfThrowing == 0) {
+                    gameActivity.setAvailabilityButtons(true);
+                    gameActivity.resetThrowButton();
+                    gameActivity.collectAccumulated();
+                } else {
+                    //gameActivity.playMachine(numberOfThrowing);
+                }
+            }
+        }.start();
+
+
+
+
+
+
+
+
+
+
 
         animationDuration = (int) (secondsOfAnimation * 1000); // Milliseconds
-        int frameDuration = animationDuration / numberOfFrames;
+        int frameDuration = animationDuration / FRAMES;
 
         /* Add each frame to the animation */
-        randomNumbers = RandomNumbers.getRandomNumbers(numberOfFrames, 0, drawables.length-1);
+       /* randomNumbers = RandomNumbers.getRandomNumbers(FRAMES, 0, 5); // Random number between 0 & 5
         for (int randomIndex : randomNumbers)
             this.addFrame(drawables[randomNumbers[randomIndex]], frameDuration);
     }
@@ -39,5 +69,5 @@ public abstract class ChangeImageAnimation extends AnimationDrawable {
 
     // Called when the animation finishes //
     protected abstract void onAnimationFinish();
-
+*/
 }
